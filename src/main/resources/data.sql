@@ -35,14 +35,14 @@ INSERT INTO User_man (id, officeId, firstName, lastName, secondName, middleName,
 INSERT INTO User_man (id, officeId, firstName, lastName, secondName, middleName, user_position, docId, citizenshipId, isIdentified)
     VALUES (8, 4, ' Ираклий ', 'Макаров', 'Сергеевич', 'iii', 'уборщик', 7,1,true)
 
-INSERT INTO docs (id, name, number, docDate, code) VALUES (1,'паспорт', '123123123',25.10.2010, 25);
-INSERT INTO docs (id, name, number, docDate, code) VALUES (2,'воен.билет', '73753573',25.10.2010, 25);
-INSERT INTO docs (id, name, number, docDate, code) VALUES (3,'паспорт', '73793345',25.10.2010, 25);
-INSERT INTO docs (id, name, number, docDate, code) VALUES (4,'вод.удост.', '8634334364',25.10.2010, 25);
-INSERT INTO docs (id, name, number, docDate, code) VALUES (5,'паспорт', '123123123',25.10.2010, 25);
-INSERT INTO docs (id, name, number, docDate, code) VALUES (6,'воен. билет', '986737343',25.10.2010, 25);
-INSERT INTO docs (id, name, number, docDate, code) VALUES (7,'паспорт', '6884534334',25.10.2010, 25);
-INSERT INTO docs (id, name, number, docDate, code) VALUES (8,'паспорт', '3333333333',25.10.2010, 25);
+INSERT INTO docs (id, name, number, docDate, code) VALUES (1,'паспорт', '123123123','2010-10-10', 25);
+INSERT INTO docs (id, name, number, docDate, code) VALUES (2,'воен.билет', '73753573','2010-10-10', 25);
+INSERT INTO docs (id, name, number, docDate, code) VALUES (3,'паспорт', '73793345','2010-10-10', 25);
+INSERT INTO docs (id, name, number, docDate, code) VALUES (4,'вод.удост.', '8634334364','2010-10-10', 25);
+INSERT INTO docs (id, name, number, docDate, code) VALUES (5,'паспорт', '123123123','2010-10-10', 25);
+INSERT INTO docs (id, name, number, docDate, code) VALUES (6,'воен. билет', '986737343','2010-10-10', 25);
+INSERT INTO docs (id, name, number, docDate, code) VALUES (7,'паспорт', '6884534334','2010-10-10', 25);
+INSERT INTO docs (id, name, number, docDate, code) VALUES (8,'паспорт', '3333333333','2010-10-10', 25);
 
 INSERT INTO Citizenship (id, name, code) VALUES (1, 'РФ', 323);
 

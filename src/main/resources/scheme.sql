@@ -107,10 +107,10 @@ COMMENT ON COLUMN User_man.citizenshipId IS 'id страны.';
 COMMENT ON COLUMN User_man.isIdentified IS 'аиндивицирован лм работник';
 
 COMMENT ON TABLE docs IS 'таблица документов';
-COMMENT ON COLUMN docs.id 'id документа';
+COMMENT ON COLUMN docs.id IS 'id документа';
 COMMENT ON COLUMN docs.name IS 'Название документа';
 COMMENT ON COLUMN docs.number IS 'номер документа';
-COMMENT ON COLUMN docs.docDate  IS 'дата создания документа;
+COMMENT ON COLUMN docs.docDate  IS 'дата создания документа';
 COMMENT ON COLUMN docs.code IS 'код документа';
 
 COMMENT ON TABLE Citizenship IS 'таблица -Страна';

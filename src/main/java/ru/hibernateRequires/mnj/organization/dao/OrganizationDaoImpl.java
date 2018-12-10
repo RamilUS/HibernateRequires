@@ -17,7 +17,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class OrganizationDaoImpl implements OrganizatioDao{
+public class OrganizationDaoImpl implements OrganizationDao {
     @PersistenceContext
     private final EntityManager em;
 

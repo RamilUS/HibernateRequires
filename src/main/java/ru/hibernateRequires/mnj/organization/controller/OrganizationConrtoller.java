@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.hibernateRequires.mnj.organization.service.OrganizationService;
 import ru.hibernateRequires.mnj.organization.view.OrganizationView;
+import ru.hibernateRequires.mnj.organization.view.OrganizationViewList;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -43,15 +44,15 @@ public class OrganizationConrtoller {
                 @ApiResponse(code = 500, message = "Failure")})
         @PostMapping(value = "/list", consumes = APPLICATION_JSON_VALUE)
         public Object listUsers() {
-            List<OrganizationView> views;
+            List<OrganizationViewList> views;
             try {
-                views = organizationService.organization();
+                views = organizationService.organizations();
             }
             catch (SQLException e){
                 return "{\"error\":"+"{Ошибка при получении списка организаций "+e.getMessage()+"}";
             }
             if (views == null) return "{\"error\":\"Список организаций пустой\"}";
-            return views;
+            return views;//точно ли?
         }
     }
 }

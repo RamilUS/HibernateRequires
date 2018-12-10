@@ -1,9 +1,9 @@
 package ru.hibernateRequires.mnj.organization.view;
 
-public class OrganizationView {
+public class OrganizationView extends OrganizationViewList{
     public Integer version;
 
-    public String fullname;
+    public String fullName;
 
     public String address;
 
@@ -15,6 +15,6 @@ public class OrganizationView {
 
     @Override
     public String toString(){
-        return fullname+" "+address+" "+phone;
+        return fullName+" "+address+" "+phone;
     }
 }

@@ -3,6 +3,8 @@ package ru.hibernateRequires.mnj.organization.service;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.hibernateRequires.mnj.organization.dao.OrganizationDao;
@@ -17,8 +19,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class OrganizationServiceImpl implements OrganizationService{
-
+    private final Logger log = LoggerFactory.getLogger(getClass());
     private final OrganizationDao organizationDao;
+
 
     @Autowired
     public OrganizationServiceImpl(OrganizationDao organizationDao){

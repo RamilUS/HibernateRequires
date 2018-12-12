@@ -1,8 +1,10 @@
 package ru.hibernateRequires.mnj.docs.entity;
 
+import ru.hibernateRequires.mnj.user.entity.User;
+
 import javax.persistence.*;
 
-@Entity(name = "doc")
+@Entity(name = "docs")
 public class Docs {
     @Id
     @GeneratedValue
@@ -15,13 +17,12 @@ public class Docs {
     @Column(name = "code",  nullable = false)
     private Integer code;
 
-    /*    private User user;
+     private User user;
 
-        @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
-        public User uaer (){
+        @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+        public User user (){
             return user;
         };
-    */
     public String getName(){return name;}
     public Long getId (){return id;}
     public Integer getCode() {return code;}

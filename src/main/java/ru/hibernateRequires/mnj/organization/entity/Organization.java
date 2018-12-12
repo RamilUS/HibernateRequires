@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class Organization {
 
-    public Organization() {
+   /* public Organization() {
 
     }
 
@@ -32,13 +32,14 @@ public class Organization {
         this.address = address;
         this.phone = phone;
         this.isActive = isActive;
-    }
+    }*/
 
     @Id
     @GeneratedValue
-    @Column(nullable = false)
+    @Column(name="Id", nullable = false)
     private Integer id;
 
+    @Version
     private Integer version;
 
     private String name;

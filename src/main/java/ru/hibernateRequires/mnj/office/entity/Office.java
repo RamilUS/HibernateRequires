@@ -1,6 +1,10 @@
 package ru.hibernateRequires.mnj.office.entity;
 
+import ru.hibernateRequires.mnj.organization.entity.Organization;
+import ru.hibernateRequires.mnj.user.entity.User;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "office")
@@ -25,7 +29,7 @@ public Office (Long id, Long orgId, String name, String address, String phone, B
 
         @Id
         @GeneratedValue
-        @Column
+        @Column(nullable = false)
         private Long id;
         @Version
         private Integer version;
@@ -40,11 +44,17 @@ public Office (Long id, Long orgId, String name, String address, String phone, B
         @Column(name= "isActive", nullable = false)
         private Boolean isActive;
 
+    @OneToMany(mappedBy = "office")
+    public Set<User> users;
+
+    @ManyToOne
+    @JoinColumn(name = "orgId", insertable = false, updatable = false)
+    public Organization organization;
 
         public Long getId() {
             return id;
         }
-        public Long getOrg_id(){return orgId;}
+        public Long getOrgId(){return orgId;}
         public String getName() {
             return name;
         }

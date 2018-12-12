@@ -18,14 +18,14 @@ CREATE TABLE IF NOT EXISTS Office( --офис организации
     isActive   BOOLEAN --активный ли офис
     );
 
-CREATE TABLE IF NOT EXISTS User_man( -- таблица работник
+CREATE TABLE IF NOT EXISTS User ( -- таблица работник
     id         INTEGER  PRIMARY KEY AUTO_INCREMENT, -- id работника
     officeId   INTEGER NOT NULL, -- в каком офисе работает работник
     firstName  VARCHAR(50) NOT NULL, --Имя работника
     lastName   VARCHAR(50) NOT NULL, -- Фамилия работника
     secondName VARCHAR(50) NOT NULL, -- Отчество работника
     middleName VARCHAR(50) NOT NULL, -- Среднее имя(В англоязычных именах)
-    user_position  VARCHAR(50)  NOT NULL, -- должность работника
+    position  VARCHAR(50)  NOT NULL, -- должность работника
     docId      VARCHAR(50) NOT NULL, -- id документа
     citizenshipId       INTEGER NOT NULL, -- id страны.
     isIdentified  BOOLEAN --индивицирован лм работник
@@ -55,10 +55,10 @@ CREATE INDEX IX_Office_name ON Office (name);
 CREATE INDEX IX_Office_phone ON Office (phone);
 CREATE INDEX IX_Office_isActive ON Office (isActive);
 
-CREATE INDEX IX_User_man_firstName ON Office (firstName);
-CREATE INDEX IX_User_man_secondName ON Office (secondName);
-CREATE INDEX IX_User_man_lastName ON Office (lastName);
-CREATE INDEX IX_User_man_user_position ON Office (user_position);
+CREATE INDEX IX_User_firstName ON Office (firstName);
+CREATE INDEX IX_User_secondName ON Office (secondName);
+CREATE INDEX IX_User_lastName ON Office (lastName);
+CREATE INDEX IX_User_user_position ON Office (position);
 
 
 CREATE INDEX IX_Office_orgId ON Office(orgId);
@@ -66,15 +66,15 @@ ALTER TABLE Office ADD FOREIGN KEY (orgId) REFERENCES Organization(id);
 -- orgId в таблице Office ссылыется по внешнему ключу
 -- на  id организации Organization(id)
 
-CREATE INDEX IX_User_man_OfficeId ON User_man (officeId);
-ALTER TABLE User_man ADD FOREIGN KEY (officeId) REFERENCES Office(id);
+CREATE INDEX IX_User_OfficeId ON User (officeId);
+ALTER TABLE User ADD FOREIGN KEY (officeId) REFERENCES Office(id);
  -- officeId в таблице User_man ссылыется по внешнему ключу
  -- на  id офиса Office(id)
-CREATE INDEX IX_User_man_docId ON User_man (docId);
+CREATE INDEX IX_User_docId ON User (docId);
 ALTER TABLE User_man ADD FOREIGN KEY (docId) REFERENCES docs(id);
 
-CREATE INDEX IX_User_man_citizenshipId ON User_man (citizenshipId);
-ALTER TABLE User_man ADD FOREIGN KEY (citizenshipId) REFERENCES Citizenship(id);
+CREATE INDEX IX_User_citizenshipId ON User (citizenshipId);
+ALTER TABLE User ADD FOREIGN KEY (citizenshipId) REFERENCES Citizenship(id);
 
 -- КОММЕНТАРИИ
 COMMENT ON TABLE Organization IS 'таблица организаци';
@@ -94,17 +94,17 @@ COMMENT ON COLUMN Office.address IS 'адрес офиса';
 COMMENT ON COLUMN Office.phone  IS 'телефоный номер офиса';
 COMMENT ON COLUMN Office.isActive IS 'активный ли офис';
 
-COMMENT ON TABLE User_man IS 'таблица работник';
-COMMENT ON COLUMN User_man.id IS 'id работника';
-COMMENT ON COLUMN User_man.officeId  IS 'в каком офисе работает работник';
-COMMENT ON COLUMN User_man.firstName IS 'Имя работника';
-COMMENT ON COLUMN User_man.lastName  IS 'Фамилия работника';
-COMMENT ON COLUMN User_man.secondName IS 'Отчество работника';
-COMMENT ON COLUMN User_man.middleName IS 'Среднее имя(В англоязычных именах)';
-COMMENT ON COLUMN User_man.user_position  IS 'должность работника';
-COMMENT ON COLUMN User_man.docId IS 'id документа';
-COMMENT ON COLUMN User_man.citizenshipId IS 'id страны.';
-COMMENT ON COLUMN User_man.isIdentified IS 'аиндивицирован лм работник';
+COMMENT ON TABLE User IS 'таблица работник';
+COMMENT ON COLUMN User.id IS 'id работника';
+COMMENT ON COLUMN User.officeId  IS 'в каком офисе работает работник';
+COMMENT ON COLUMN User.firstName IS 'Имя работника';
+COMMENT ON COLUMN User.lastName  IS 'Фамилия работника';
+COMMENT ON COLUMN User.secondName IS 'Отчество работника';
+COMMENT ON COLUMN User.middleName IS 'Среднее имя(В англоязычных именах)';
+COMMENT ON COLUMN User.position  IS 'должность работника';
+COMMENT ON COLUMN User.docId IS 'id документа';
+COMMENT ON COLUMN User.citizenshipId IS 'id страны.';
+COMMENT ON COLUMN User.isIdentified IS 'аиндивицирован лм работник';
 
 COMMENT ON TABLE docs IS 'таблица документов';
 COMMENT ON COLUMN docs.id IS 'id документа';

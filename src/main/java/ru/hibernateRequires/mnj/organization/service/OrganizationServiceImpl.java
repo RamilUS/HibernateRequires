@@ -18,13 +18,13 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
-public class OrganizationServiceImpl implements OrganizationService{
-    private final Logger log = LoggerFactory.getLogger(getClass());
+public class OrganizationServiceImpl implements OrganizationService {
+    //private final Logger log = LoggerFactory.getLogger(getClass());
     private final OrganizationDao organizationDao;
 
 
     @Autowired
-    public OrganizationServiceImpl(OrganizationDao organizationDao){
+    public OrganizationServiceImpl(OrganizationDao organizationDao) {
         this.organizationDao = organizationDao;
     }
 
@@ -46,34 +46,35 @@ public class OrganizationServiceImpl implements OrganizationService{
         organizationDao.update(viewToOrganization(view));
     }
 
+
     @Override
     public OrganizationView loadById(int id) throws SQLException {
         return organizationToView(organizationDao.loadById(id));
     }
 
-    private Function<Organization,OrganizationViewList> mapOrganization(){
+    private Function<Organization, OrganizationViewList> mapOrganization() {
         return o -> {
             return organizationToViewList(o);
         };
     }
 
-    private OrganizationViewList organizationToViewList(Organization office){
+    private OrganizationViewList organizationToViewList(Organization office) {
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
-        mapperFactory.classMap(OrganizationViewList.class,Organization.class);
+        mapperFactory.classMap(OrganizationViewList.class, Organization.class);
         MapperFacade mapper = mapperFactory.getMapperFacade();
-        return mapper.map(office,OrganizationViewList.class);
+        return mapper.map(office, OrganizationViewList.class);
     }
 
-    private Organization viewToOrganization(OrganizationView view){
+    private Organization viewToOrganization(OrganizationView view) {
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
-        mapperFactory.classMap(OrganizationView.class,Organization.class);
+        mapperFactory.classMap(OrganizationView.class, Organization.class);
         MapperFacade mapper = mapperFactory.getMapperFacade();
-        return mapper.map(view,Organization.class);
+        return mapper.map(view, Organization.class);
     }
 
-    private OrganizationView organizationToView(Organization office){
+    private OrganizationView organizationToView(Organization office) {
         MapperFactory mapperFactory = new DefaultMapperFactory.Builder().build();
-        mapperFactory.classMap(OrganizationView.class,Organization.class);
+        mapperFactory.classMap(OrganizationView.class, Organization.class);
         MapperFacade mapper = mapperFactory.getMapperFacade();
         return mapper.map(office, OrganizationView.class);
     }

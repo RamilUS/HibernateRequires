@@ -1,16 +1,20 @@
 package ru.hibernateRequires.mnj.user.entity;
 
+import ru.hibernateRequires.mnj.county.entity.Countries;
+import ru.hibernateRequires.mnj.docs.entity.Docs;
+import ru.hibernateRequires.mnj.office.entity.Office;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "user")
+@Table(name = "user_man")
 public class User {
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "id",nullable = false)
     private Long id;
-    @javax.persistence.Version
+    @Version
     private Integer Version;
     @Column(name = "officeId")
     private Long officeId;
@@ -37,11 +41,20 @@ public class User {
     private String citizenshipCode;
     @Column(name = "isIdentified" , nullable = false)
     private Boolean isIdentified;
-    /*
-        @OneToOne(fetch = FetchType.EAGER)
-        @JoinColumn(name = "DOC_CODE", referencedColumnName = "code")
-        private Docs Doc;
-    */
+
+    @ManyToOne
+    @JoinColumn(name = "officeId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Office office;
+
+    @ManyToOne
+    @JoinColumn(name = "docId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Docs docs;
+
+    @ManyToOne
+    @JoinColumn(name = "citizenshipId", referencedColumnName = "id", insertable = false, updatable = false)
+    private Countries country;
+
+
     public User(){
 
     }
